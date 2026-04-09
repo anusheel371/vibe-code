@@ -8,13 +8,9 @@ function Score() {
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // Get score from navigation state (you can replace this with real API data later)
-  const resumeData = location.state || {};
-
   useEffect(() => {
-    // Simulate AI scoring delay
     setTimeout(() => {
-      const calculatedScore = 78; // Replace with your actual score from backend
+      const calculatedScore = 78;
       setScore(calculatedScore);
       setLoading(false);
     }, 1200);
@@ -53,4 +49,36 @@ function Score() {
 
         {/* Score Label */}
         <div className="text-center mb-12">
-          <div className
+          <div className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-3xl text-lg font-semibold
+            ${score >= 80 ? 'bg-green-100 text-green-700' : 
+              score >= 60 ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}`}>
+            {score >= 80 ? 'Excellent' : score >= 60 ? 'Good' : 'Needs Improvement'}
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <button
+            onClick={() => navigate('/optimize')}
+            className="btn-primary py-6 text-lg font-semibold flex items-center justify-center gap-3"
+          >
+            Improve My Score →
+          </button>
+
+          <button
+            onClick={() => navigate('/result')}
+            className="bg-white border-2 border-slate-300 hover:border-slate-400 text-slate-700 py-6 text-lg font-semibold rounded-2xl transition-all"
+          >
+            View Detailed Analysis
+          </button>
+        </div>
+      </div>
+
+      <p className="text-center text-sm text-slate-500 mt-8">
+        This score is powered by AI analysis of content, structure, keywords, and design
+      </p>
+    </div>
+  );
+}
+
+export default Score;
