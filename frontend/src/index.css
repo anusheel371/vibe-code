@@ -1,11 +1,13 @@
-/* frontend/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  color: #1e2937;
 }
 
 .app-container {
@@ -29,7 +31,6 @@ body {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12);
 }
 
-/* Buttons */
 .btn-primary {
   background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
@@ -46,7 +47,6 @@ body {
   box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
 }
 
-/* Progress Circle for Score */
 .score-circle {
   width: 180px;
   height: 180px;
@@ -55,4 +55,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
