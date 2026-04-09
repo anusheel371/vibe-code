@@ -14,7 +14,7 @@ function App() {
           <div className="app-container flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl">V</div>
-              <h1 className="text-2xl font-semibold tracking-tight text-slate-900">VibeCode</h1>
+              <h1 className="text-2xl font-semibold tracking-tight text-slate-900">PulseCV</h1>
             </div>
             
             <div className="flex gap-8 text-sm font-medium text-slate-600">
