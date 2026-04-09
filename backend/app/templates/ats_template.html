@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ATS Resume</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 40px;
+    color: #111;
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 25px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+p {
+    line-height: 1.5;
+    margin: 6px 0;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.contact {
+    font-size: 14px;
+    color: #444;
+}
+
+pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>{{ name if name else "Your Name" }}</h1>
+
+    <div class="contact">
+        {{ email if email else "email@example.com" }} |
+        {{ phone if phone else "Phone" }} |
+        {{ location if location else "Location" }}
+    </div>
+</div>
+
+
+<div class="section">
+    <h2>Professional Summary</h2>
+    <p>
+        {{ summary if summary else "Experienced professional aligned with job requirements." }}
+    </p>
+</div>
+
+
+<div class="section">
+    <h2>Skills</h2>
+    <ul>
+        {% if skills %}
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        {% else %}
+            <li>Python</li>
+            <li>JavaScript</li>
+            <li>React</li>
+        {% endif %}
+    </ul>
+</div>
+
+
+<div class="section">
+    <h2>Experience</h2>
+    <pre>
+{{ experience if experience else resume }}
+    </pre>
+</div>
+
+
+<div class="section">
+    <h2>Projects</h2>
+    <p>
+        {{ projects if projects else "Relevant projects aligned with job description." }}
+    </p>
+</div>
+
+
+<div class="section">
+    <h2>Education</h2>
+    <p>
+        {{ education if education else "Bachelor's Degree" }}
+    </p>
+</div>
+
+
+<div class="section">
+    <h2>Keywords From Job Description</h2>
+    <pre>
+{{ job }}
+    </pre>
+</div>
+
+</body>
+</html>

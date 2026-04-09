@@ -1,0 +1,26 @@
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Resume parsing
+pdfplumber
+python-docx
+
+# NLP / ATS scoring
+scikit-learn
+numpy
+
+# embeddings (offline semantic match)
+sentence-transformers
+torch
+transformers
+
+# keyword extraction
+keybert
+
+# template engine
+jinja2
+
+# utilities
+pydantic
+python-dotenv
