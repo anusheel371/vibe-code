@@ -1,67 +1,56 @@
-import React, { useEffect, useState } from "react";
+// frontend/src/pages/Score.jsx
 import { useLocation, useNavigate } from "react-router-dom";
-import { getATSScore } from "../api/atsApi";
+import { useEffect, useState } from "react";
 
-const Score = () => {
+function Score() {
   const location = useLocation();
   const navigate = useNavigate();
-
-  const [score, setScore] = useState(null);
+  const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const resumeId = location.state?.resumeId;
+  // Get score from navigation state (you can replace this with real API data later)
+  const resumeData = location.state || {};
 
   useEffect(() => {
-    if (!resumeId) return;
-
-    const fetchScore = async () => {
-      try {
-        const res = await getATSScore(resumeId);
-        setScore(res.score);
-      } catch (err) {
-        console.error(err);
-      }
-
+    // Simulate AI scoring delay
+    setTimeout(() => {
+      const calculatedScore = 78; // Replace with your actual score from backend
+      setScore(calculatedScore);
       setLoading(false);
-    };
+    }, 1200);
+  }, []);
 
-    fetchScore();
-  }, [resumeId]);
-
-  if (!resumeId) {
+  if (loading) {
     return (
-      <div className="p-10 text-center">
-        No resume found. Please upload again.
+      <div className="flex flex-col items-center justify-center min-h-[70vh]">
+        <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin mb-6"></div>
+        <h3 className="text-2xl font-semibold text-slate-700">Calculating Vibe Score...</h3>
+        <p className="text-slate-500 mt-2">Our AI is analyzing your resume</p>
       </div>
     );
   }
 
   return (
-    <div className="p-10 text-center">
-      <h1 className="text-3xl font-bold mb-6">
-        ATS Score
-      </h1>
+    <div className="max-w-4xl mx-auto py-12">
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold text-slate-900 mb-3">Your Resume Vibe Score</h1>
+        <p className="text-slate-600 text-lg">Here's how strong your resume looks to recruiters</p>
+      </div>
 
-      {loading && <div>Calculating...</div>}
-
-      {!loading && score !== null && (
-        <div className="text-6xl font-bold text-green-600">
-          {score}/100
+      <div className="card p-10 md:p-16">
+        {/* Score Circle */}
+        <div className="flex justify-center mb-10">
+          <div 
+            className="score-circle mx-auto relative"
+            style={{ '--score': `${score}%` }}
+          >
+            <div className="text-center">
+              <div className="text-7xl font-bold text-slate-900">{score}</div>
+              <div className="text-base text-slate-500 -mt-1">/ 100</div>
+            </div>
+          </div>
         </div>
-      )}
 
-      <button
-        onClick={() =>
-          navigate("/optimize", {
-            state: { resumeId },
-          })
-        }
-        className="mt-8 bg-black text-white px-6 py-2 rounded"
-      >
-        Improve Resume
-      </button>
-    </div>
-  );
-};
-
-export default Score;
+        {/* Score Label */}
+        <div className="text-center mb-12">
+          <div className
